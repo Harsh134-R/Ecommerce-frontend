@@ -1,0 +1,25 @@
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'http://localhost:8080/api',
+});
+
+api.interceptors.request.use(config => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export default api;
+
+// Address Book API
+export const getAddresses = () => api.get('/addresses');
+export const addAddress = (address) => api.post('/addresses', address);
+export const updateAddress = (id, address) => api.put(`/addresses/${id}`, address);
+export const deleteAddress = (id) => api.delete(`/addresses/${id}`);
+
+// Order Address Management
+export const updateOrderAddress = (orderId, newAddress) => api.put(`/orders/${orderId}/address`, newAddress, { headers: { 'Content-Type': 'application/json' } });
+export const deleteOrder = (orderId) => api.delete(`/orders/${orderId}`);
