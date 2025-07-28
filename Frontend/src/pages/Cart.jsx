@@ -123,7 +123,8 @@ const Cart = () => {
                 <img
                   src={item.product.image}
                   alt={item.product.name}
-                  className="w-24 h-24 object-cover rounded mr-4"
+                  className="w-24 h-24 object-contain rounded mr-4 bg-white border"
+                  style={{ display: 'block', background: '#fff' }}
                 />
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold">{item.product.name}</h3>
@@ -173,12 +174,12 @@ const Cart = () => {
               <div className="bg-gray-50 p-4 rounded shadow">
                 <div className="mb-2 font-medium">Or enter a new address:</div>
                 <div className="grid grid-cols-2 gap-2">
-                  <input name="label" value={newAddress.label} onChange={handleNewAddressChange} placeholder="Label (Home, Work)" className="border p-2 rounded" required={useNewAddress} />
-                  <input name="street" value={newAddress.street} onChange={handleNewAddressChange} placeholder="Street" className="border p-2 rounded" required={useNewAddress} />
-                  <input name="city" value={newAddress.city} onChange={handleNewAddressChange} placeholder="City" className="border p-2 rounded" required={useNewAddress} />
-                  <input name="state" value={newAddress.state} onChange={handleNewAddressChange} placeholder="State" className="border p-2 rounded" required={useNewAddress} />
-                  <input name="postalCode" value={newAddress.postalCode} onChange={handleNewAddressChange} placeholder="Postal Code" className="border p-2 rounded" required={useNewAddress} />
-                  <input name="country" value={newAddress.country} onChange={handleNewAddressChange} placeholder="Country" className="border p-2 rounded" required={useNewAddress} />
+                  <input name="label" value={newAddress.label || ""} onChange={handleNewAddressChange} placeholder="Label (Home, Work)" className="border p-2 rounded" required={useNewAddress} />
+                  <input name="street" value={newAddress.street || ""} onChange={handleNewAddressChange} placeholder="Street" className="border p-2 rounded" required={useNewAddress} />
+                  <input name="city" value={newAddress.city || ""} onChange={handleNewAddressChange} placeholder="City" className="border p-2 rounded" required={useNewAddress} />
+                  <input name="state" value={newAddress.state || ""} onChange={handleNewAddressChange} placeholder="State" className="border p-2 rounded" required={useNewAddress} />
+                  <input name="postalCode" value={newAddress.postalCode || ""} onChange={handleNewAddressChange} placeholder="Postal Code" className="border p-2 rounded" required={useNewAddress} />
+                  <input name="country" value={newAddress.country || ""} onChange={handleNewAddressChange} placeholder="Country" className="border p-2 rounded" required={useNewAddress} />
                 </div>
               </div>
             </div>
@@ -189,12 +190,20 @@ const Cart = () => {
                   .reduce((sum, item) => sum + item.product.price * item.quantity, 0)
                   .toFixed(2)}
               </div>
-              <button
-                onClick={handlePlaceOrder}
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-              >
-                Place Order
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => navigate('/checkout')}
+                  className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                >
+                  Proceed to Checkout
+                </button>
+                <button
+                  onClick={handlePlaceOrder}
+                  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                  Place Order (Direct)
+                </button>
+              </div>
             </div>
           </div>
         </>

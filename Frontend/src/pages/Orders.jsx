@@ -82,7 +82,7 @@ const Orders = () => {
                   {order.items.map(item => (
                     <div key={item.id} className="flex items-center bg-gray-50 rounded p-3 shadow-sm">
                       {item.product && item.product.image && (
-                        <img src={item.product.image} alt={item.product.name} className="w-16 h-16 object-cover rounded mr-4 border" />
+                        <img src={item.product.image} alt={item.product.name} className="w-16 h-16 object-contain rounded mr-4 border bg-white" style={{ display: 'block', background: '#fff' }} />
                       )}
                       <div className="flex-1">
                         <div className="font-medium">{item.product ? item.product.name : `Product #${item.productId}`}</div>

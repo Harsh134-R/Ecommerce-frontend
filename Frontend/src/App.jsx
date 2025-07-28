@@ -10,6 +10,8 @@ import Cart from './Pages/Cart';
 import Orders from './Pages/Orders';
 import AdminPanel from './components/AdminPanel';
 import AddressBook from './pages/AddressBook';
+import Checkout from './pages/Checkout';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 const ProtectedRoute = ({ children, adminOnly }) => {
   const token = localStorage.getItem('token');
@@ -36,6 +38,8 @@ const App = () => {
           element={<ProtectedRoute adminOnly><AdminPanel /></ProtectedRoute>}
         />
         <Route path="/address-book" element={<ProtectedRoute><AddressBook /></ProtectedRoute>} />
+        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
     </div>
   );

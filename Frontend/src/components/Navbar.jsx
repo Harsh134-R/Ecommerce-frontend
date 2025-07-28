@@ -19,6 +19,9 @@ const Navbar = () => {
         <div className="space-x-4">
           <Link to="/" className="text-white hover:text-gray-300">Home</Link>
           <Link to="/cart" className="text-white hover:text-gray-300">Cart</Link>
+          {token && (
+            <Link to="/orders" className="text-white hover:text-gray-300">Orders</Link>
+          )}
           {token ? (
             <>
               {role === 'ADMIN' && (

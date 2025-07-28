@@ -23,3 +23,7 @@ export const deleteAddress = (id) => api.delete(`/addresses/${id}`);
 // Order Address Management
 export const updateOrderAddress = (orderId, newAddress) => api.put(`/orders/${orderId}/address`, newAddress, { headers: { 'Content-Type': 'application/json' } });
 export const deleteOrder = (orderId) => api.delete(`/orders/${orderId}`);
+
+// Payment API
+export const createPaymentIntent = (amount, currency = 'usd') => api.post('/payment/create-payment-intent', { amount, currency });
+export const confirmPayment = (paymentIntentId, status) => api.post('/payment/confirm-payment', { paymentIntentId, status });

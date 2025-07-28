@@ -37,7 +37,7 @@ const ProductDetails = () => {
       <h2 className="text-2xl font-bold mb-4">{product.name}</h2>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="flex flex-col md:flex-row gap-4">
-        <img src={product.image} alt={product.name} className="w-full md:w-1/2 h-64 object-cover" />
+        <img src={product.image} alt={product.name} className="w-full md:w-1/2 h-64 object-contain bg-white border" style={{ display: 'block', background: '#fff' }} />
         <div>
           <p className="text-lg font-semibold">${product.price}</p>
           <p className="text-gray-600 mb-2">{product.description}</p>
