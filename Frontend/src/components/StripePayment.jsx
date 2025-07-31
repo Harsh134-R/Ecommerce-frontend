@@ -3,7 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import api from '../services/api';
 
-const stripePromise = loadStripe('');
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC);
 
 const CheckoutForm = ({ clientSecret, amount, onPaymentSuccess, onPaymentError, beforePayment }) => {
   const stripe = useStripe();
